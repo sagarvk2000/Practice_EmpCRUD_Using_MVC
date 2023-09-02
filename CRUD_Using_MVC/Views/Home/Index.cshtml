@@ -1,8 +1,42 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
+﻿
+@{
+    ViewData["Title"] = "Index";
+}
+@using(Html.BeginForm()) // it is same as <form>
+{
+
+
+<p>
+    <label>Enter your name</label>
+    @Html.TextBox("username")
+</p>
+<p>
+    <label>Select Gender</label>
+    @Html.RadioButton("gender","male","male") Male
+    @Html.RadioButton("gender","female","female") Female
+</p>
+<p>
+    <label>Select Hobbies</label>
+    <input type="checkbox" name="hobbies" value="Sports"/> Sports
+    <input type="checkbox" name="hobbies" value="Music"/> Music
+</p>
+<p>
+    <label>Select City</label>
+    @Html.DropDownList("cities")
+</p>
+<p>
+    <label>Select City</label>
+    @Html.ListBox("list")
+</p>
+<p>
+    <label>Your comments</label>
+    @Html.TextArea("comments")
+</p>
+<p>
+    <input type="submit" value="Save"/>
+</p>
+
+
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+

@@ -1,5 +1,6 @@
 ﻿using CRUD_Using_MVC.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using System.Diagnostics;
 
 namespace CRUD_Using_MVC.Controllers
@@ -15,7 +16,20 @@ namespace CRUD_Using_MVC.Controllers
 
         public IActionResult Index()
         {
+            List<string> cities = new List<string>() { "pune", "mumbai", "solapur", "latur", "sangli" };
+            ViewData["cities"] = new SelectList(cities);//allow single selection
+            ViewData["list"] = new MultiSelectList(cities);//multiple selection
             return View();
+        }
+        [HttpPost]
+        public IActionResult Index(IFormCollection form, ICollection<string> hobbies)
+        {
+            ViewBag.Username = form["username"];
+            ViewBag.Gender = form["gender"];
+            ViewBag.City = form["cities"];
+            ViewBag.Hobbies = hobbies;
+            ViewBag.Comments = form["comments"];
+            return View("ShowInfo");
         }
 
         public IActionResult Privacy()
